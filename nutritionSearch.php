@@ -77,8 +77,8 @@
 
             <!--backend logc for nutrition search - API & API endpoint logics-->
             <?php
-            $consumer_key = '02d2f66fd5a4420a936667a2e021a82d'; //API key
-            $consumer_secret = '47b4ffcaca39474fabfa70ba9217395a'; //API secret key
+            $consumer_key = 'API_KEY'; //API key
+            $consumer_secret = 'API_SECRET_KEY'; //API secret key
 
             if (isset($_GET['food']) && !empty($_GET['food'])) {
                 $foodItem = urlencode($_GET['food']);
