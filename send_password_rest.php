@@ -48,8 +48,8 @@ try {
     $mail->isSMTP();
     $mail->Host = "smtp.gmail.com"; // Update with your SMTP server
     $mail->SMTPAuth = true;
-    $mail->Username = "joobat4@gmail.com"; // Update with your email
-    $mail->Password = "tuia jhle kbau efeq"; // Update with your password
+    $mail->Username = "example@gmail.com"; // Update with your email
+    $mail->Password = "PASSWORD"; // Update with your password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 
