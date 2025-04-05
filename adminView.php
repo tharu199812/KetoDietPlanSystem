@@ -66,6 +66,10 @@
                             <h5>All Diet Plans</h5>
                         </div>
                         <div class="card-body">
+                            <div class="mb-3">
+                                <input type="text" id="searchInput" class="form-control" placeholder="Search by Plan Name...">
+                            </div>
+
                             <table class="table table-striped">
                                 <thead class="table-dark">
                                     <tr>
@@ -145,6 +149,25 @@
                     });
                 }
             }
+        </script>
+        <script>
+            document.getElementById('searchInput').addEventListener('keyup', function () {
+                const searchText = this.value.trim().toLowerCase();
+                const rows = document.querySelectorAll('#dietPlansTable tr');
+
+                rows.forEach(row => {
+                    const planNameCell = row.querySelector('td');
+                    if (planNameCell) {
+                        const planName = planNameCell.textContent.trim().toLowerCase();
+                        // Exact match (case-insensitive)
+                        if (planName === searchText) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    }
+                });
+            });
         </script>
     </body>
 </html>
