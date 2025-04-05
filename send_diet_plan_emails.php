@@ -49,8 +49,8 @@ foreach ($plans as $plan) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'joobat4@gmail.com'; // Replace with your email
-        $mail->Password = 'tuia jhle kbau efeq';  // Replace with your email password
+        $mail->Username = 'example@gmail.com'; // Replace with your email
+        $mail->Password = 'PASSWORD';  // Replace with your email password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
