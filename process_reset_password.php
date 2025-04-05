@@ -47,3 +47,4 @@ if ($stmt->affected_rows === 0) {
 }
 
 echo "Your password has been successfully reset. You can now log in.";
+?>
