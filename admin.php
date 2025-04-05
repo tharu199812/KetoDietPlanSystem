@@ -17,7 +17,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Insert diet plan
+$errorMsg = '';
+$successMsg = '';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $planName = $_POST['planName'];
     $description = $_POST['description'];
@@ -27,10 +29,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $carbs = $_POST['carbs'];
 
     $stmt = $conn->prepare("INSERT INTO admindietdetails (diet_plan_name, calorie_count, fats, protein, carbs, diet_plan_description) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sissss", $planName, $calories, $fats, $protein, $carbs, $description);
-    $stmt->execute();
-    $stmt->close();
+
+    if ($stmt) {
+        $stmt->bind_param("sissss", $planName, $calories, $fats, $protein, $carbs, $description);
+        if ($stmt->execute()) {
+            $successMsg = "Diet plan successfully added!";
+        } else {
+            $errorMsg = "Failed to insert plan. Please try again.";
+        }
+        $stmt->close();
+    } else {
+        $errorMsg = "Error preparing SQL statement.";
+    }
 }
+
 
 // Fetch contact messages
 $contactMessages = $conn->query("SELECT * FROM contact");
@@ -136,6 +148,13 @@ $contactMessages = $conn->query("SELECT * FROM contact");
                                     <input type="number" class="form-control" name="carbs" placeholder="Add carbs as percentage" required>
                                 </div>
                                 <button type="submit" class="btn btn-success w-100">Submit Plan</button>
+                                <?php if (!empty($errorMsg)) : ?>
+                                    <div class="alert alert-danger mt-3"><?php echo $errorMsg; ?></div>
+                                <?php endif; ?>
+
+                                <?php if (!empty($successMsg)) : ?>
+                                    <div class="alert alert-success mt-3"><?php echo $successMsg; ?></div>
+                                <?php endif; ?>
                             </form>
                         </div>
                     </div>
