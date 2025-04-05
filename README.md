@@ -1,3 +1,5 @@
+# Developed by Tharushi Dissanayake - Kingston University ID: K2462662, Esoft metro campus ID: E185979
+
 # Keto Diet Plan System
 
 The **Keto Diet Plan System** is a web-based application designed to help **busy overweight individuals** create and follow personalized Keto diet plans. This system provides users with a structured approach to weight management through customized scheduling, nutritional tracking, and daily motivation.
